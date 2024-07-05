@@ -51,7 +51,7 @@ export default function Navbar() {
     })}>
       <div className="px-4 container mx-auto top-0 flex justify-between items-center">
         <div className="flex items-center">
-          <h3 className="mr-6 font-bold">BlockVault</h3>
+          <h3 className="mr-6 font-bold"><a href='/'>BlockVault</a></h3>
           {!isMobile && (
             <div className='flex mx-4 gap-8 xl:flex'>
               <Menus />

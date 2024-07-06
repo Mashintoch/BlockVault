@@ -48,8 +48,8 @@ const Waitlist = () => {
       <div className="container-section">
         <h1>Be the first to know when we launch</h1>
         <p>
-          At BlockVault, We are looking to solve the problems of automation and
-          open souruce trading insigts and events aggregations.
+          At BlockVault, We are looking to solve the problems of trading automation,
+          stock ML model integration, explained trading insights and future and past events aggregations.
         </p>
         <form className="join-wrapper" onSubmit={handleSubmit}>
           <input

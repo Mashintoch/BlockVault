@@ -22,7 +22,7 @@ export default function HeroSection() {
             {/* <StarParticle className="absolute top-0 right-0" /> */}
             <PurpleCircleParticle className="absolute bottom-0 -left-12" />
 
-            <p className="text-primary">Join Waitlist</p>
+           <Rotate up delay-700><p className="text-primary">Join Waitlist</p></Rotate> 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-normal">
               Trade Your Cryptocurrency
               <br />
@@ -79,13 +79,13 @@ export default function HeroSection() {
         <div className="relative hidden md:block ">
           <BlueCircleParticle className="absolute top-0 left-11 duration-[5s]" />
           <OrangeCircleParticle className="absolute bottom-1/4 right-0 w-3 h-4" />
-          <Rotate up>
+        
             <img
               src={poster}
               alt="BlockVault"
               className="w-3/4 h-3/4 hover:rotate-45 translate-y-6 transform-gpu absolute bottom-1/4 right-0"
             />
-          </Rotate>
+       
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ export default function Footer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("YOUR_API_ENDPOINT", {
+      const response = await fetch("/waitlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,7 +46,12 @@ export default function Footer() {
             <ul>
               <li className="mb-4">
                 <a href="/" className="text-gray hover:text-primary">
-                  Buy Crypto
+                  Trade Crypto
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="/" className="text-gray hover:text-primary">
+                  Wallets
                 </a>
               </li>
               <li className="mb-4">
@@ -56,17 +61,12 @@ export default function Footer() {
               </li>
               <li className="mb-4">
                 <a href="/" className="text-gray hover:text-primary">
-                  Watchlist
+                  AI/ML
                 </a>
               </li>
               <li className="mb-4">
                 <a href="/" className="text-gray hover:text-primary">
-                  Portfolio
-                </a>
-              </li>
-              <li className="mb-4">
-                <a href="/" className="text-gray hover:text-primary">
-                  NFT
+                  Trading Bots
                 </a>
               </li>
             </ul>
@@ -75,7 +75,17 @@ export default function Footer() {
             <ul>
               <li className="mb-4">
                 <a href="/" className="text-gray hover:text-primary">
-                  Products
+                  Services
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="/" className="text-gray hover:text-primary">
+                  Whitepaper
+                </a>
+              </li>
+              <li className="mb-4">
+                <a href="/" className="text-gray hover:text-primary">
+                  Investors
                 </a>
               </li>
               <li className="mb-4">
@@ -93,11 +103,6 @@ export default function Footer() {
                   Blog
                 </a>
               </li>
-              <li className="mb-4">
-                <a href="/" className="text-gray hover:text-primary">
-                  Security
-                </a>
-              </li>
             </ul>
           </div>
           <div className="p-6 xl:flex md:justify-center xl:border-r border-lightgray">
@@ -110,11 +115,6 @@ export default function Footer() {
               <li className="mb-4">
                 <a href="/" className="text-gray hover:text-primary">
                   Contact Us
-                </a>
-              </li>
-              <li className="mb-4">
-                <a href="/" className="text-gray hover:text-primary">
-                  System Status
                 </a>
               </li>
               <li className="mb-4">

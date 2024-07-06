@@ -21,7 +21,7 @@ const Waitlist = () => {
       const formData = new FormData();
       formData.append("email", email);
 
-      const response = await fetch("/api/subscribe", {
+      const response = await fetch("/waitlist", {
         method: "POST",
         body: formData,
       });

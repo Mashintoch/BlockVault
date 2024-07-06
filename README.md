@@ -1,4 +1,4 @@
-## How to start the web
+## Start the project
 
 ```bash
 yarn
@@ -18,7 +18,7 @@ yarn test
 ```
 
 ## Contributor
-- Dicka Ismaji
+- Paul Chibueze
 
 ## License
 

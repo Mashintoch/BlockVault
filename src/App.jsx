@@ -3,6 +3,7 @@ import React from 'react';
 
 import Index from '@/pages/index';
 import CryptoCurrencyPage from '@/pages/CryptoCurrencyPage';
+import Waitlist from '@/pages/waitlist';
 import Error404 from '@/pages/Error404';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="cryptocurrency" element={<CryptoCurrencyPage />} />
+        <Route path="waitlist" element={<Waitlist />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>

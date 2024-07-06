@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
-
 import logo from "/Icons/logo.svg";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
 

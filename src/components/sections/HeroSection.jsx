@@ -8,6 +8,7 @@ import OrangeCircleParticle from "../particles/OrangeCircleParticle";
 // import StarParticle from "../particles/StarParticle";
 import PurpleCircleParticle from "../particles/PurpleCircleParticle";
 import DropdownButton from "../buttons/DropdownButton";
+import { Rotate } from "react-reveal";
 
 export default function HeroSection() {
   return (
@@ -26,14 +27,15 @@ export default function HeroSection() {
               Trade Your Cryptocurrency
               <br />
               <span className="text-blue-gradient">
-                With a Trusted Agent
+                With a Trusted Vendor
               </span>{" "}
               <br />
             </h1>
             <div className="mt-4 mb-8">
               <p className="text-gray">
                 Buy and sell 2000+ cryptocurrencies with 20+ flat currencies
-                using bank transfers or your credit/debit card.
+                using bank transfers or your credit/debit cards. 99.99% success
+                rate guaranteed!
               </p>
             </div>
             <div className="col-span-2 lg:flex gap-4 lg:mb-12">
@@ -73,15 +75,17 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+
         <div className="relative hidden md:block ">
           <BlueCircleParticle className="absolute top-0 left-11 duration-[5s]" />
-          <OrangeCircleParticle className="absolute bottom-1/4 right-0 w-3 h-4"/>
-
-          <img
-            src={poster}
-            alt="BlockVault"
-            className="w-3/4 h-3/4 hover:rotate-45 translate-y-6 transform-gpu absolute bottom-1/4 right-0"
-          />
+          <OrangeCircleParticle className="absolute bottom-1/4 right-0 w-3 h-4" />
+          <Rotate up>
+            <img
+              src={poster}
+              alt="BlockVault"
+              className="w-3/4 h-3/4 hover:rotate-45 translate-y-6 transform-gpu absolute bottom-1/4 right-0"
+            />
+          </Rotate>
         </div>
       </div>
     </section>

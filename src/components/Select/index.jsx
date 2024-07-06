@@ -17,10 +17,14 @@ export default function Select({ onChange, value = "BTC" }) {
     name: 'ETH',
     code: 'ETH',
     icon: '/cryptocurrencies/etherium.png'
+  }, {
+    name: 'SOL',
+    code: 'SOL',
+    icon: '/cryptocurrencies/solana.png'
   }];
 
   // find initial coin
-  const initialCoin = data.find(({ code }) => code === value);
+  const initialCoin = data.find(({ code }) => code === value) || data[0];
 
   const [valueSelected, setValueSelected] = useState(initialCoin);
   const [isOpen, setIsOpen] = useState(false);

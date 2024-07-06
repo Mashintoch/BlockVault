@@ -63,7 +63,7 @@ export default function Navbar() {
             Sign In
           </SecondaryButton> */}
           <PrimaryButton>
-            Join Waitlist
+             <a href='/waitlist'>Join Waitlist</a>
           </PrimaryButton>
         </div>
         <div className="md:hidden text-2xl">

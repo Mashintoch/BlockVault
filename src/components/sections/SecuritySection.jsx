@@ -1,6 +1,6 @@
 import React from 'react';
 import { BsCheckCircleFill } from 'react-icons/bs';
-
+import SecondaryButton from '@/components/buttons/SecondaryButton';
 import banks from '@/images/illustrations/banks.png';
 import { Fade } from 'react-reveal';
 
@@ -16,36 +16,30 @@ export default function SecuritySection() {
         <div className="flex justify-center">
           <div className="max-w-xl">
             <h2 className="font-bold text-4xl mb-6 leading-normal">
-              Industry-leading security from day one
+              We Offer the best AI/ML trading assistants
             </h2>
             <ul className="my-6">
               <li className='mb-6'>
                 <span>
                   <BsCheckCircleFill className='text-primary inline mr-2' />
-                  Safety, security and compliance
+                  Trading Bots
                 </span>
                 <p className="text-gray">
-                  NEFA is a licensed New York trust company that undergoes regular bank exams and is subject to the cybersecurity audits conducted by the New York Department of Financial Services. Learn more about our commitment to security.
+                  Automate your trading and dont miss on any trade with our advanced trading bots. Drive insights and automate alarms on your favourite platfroms
                 </p>
               </li>
               <li className='mb-6'>
                 <span>
                   <BsCheckCircleFill className='text-primary inline mr-2' />
-                  Hardware security keys
+                  Crypto & Stock trading ML Models
                 </span>
                 <p className="text-gray">
-                  With NEFA you can secure your account with a hardware security key via WebAuthn.
+                  With our Sophisticated Machine learning models, we offer range of trading forcasts and insights
                 </p>
               </li>
-              <li className='mb-6'>
-                <span>
-                  <BsCheckCircleFill className='text-primary inline mr-2' />
-                  SOC Certifications
-                </span>
-                <p className="text-gray">
-                  NEFA is SOC 1 Type 2 and SOC 2 Type 2 compliant. We are the world’s first cryptocurrency exchange and custodian to complete these exams.
-                </p>
-              </li>
+              <SecondaryButton>
+                  <a href="mailto:chibuezedeveloper@gmail.com">Contact Us</a>
+              </SecondaryButton>
             </ul>
           </div>
         </div>

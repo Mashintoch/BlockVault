@@ -50,17 +50,17 @@ export default function FaqSection() {
               Frequently asked questions
             </h2>
             <div className="my-6">
-              <FaqItem open={true} title="Why should I choose NEFA?">
-                We're industry pioneers, having been in the cryptocurrency industry since 2016. We've facilitated more than 21 billion USD worth of transactions on our exchange for customers in over 40 countries. Today, we're trusted by over 8 million customers around the world and have received praise for our easy-to-use app, secure wallet, and range of features.
+              <FaqItem open={true} title="Why should I choose BlockVault?">
+                We are solving the problem of trading automation and insights aggregation on the Blockchain. We offer first, an  inter-chain exchange assistance and an advanced Market automation solutions using machine learning.
               </FaqItem>
-              <FaqItem open={false} title="How secure is NEFA?">
-                We're industry pioneers, having been in the cryptocurrency industry since 2016. We've facilitated more than 21 billion USD worth of transactions on our exchange for customers in over 40 countries. Today, we're trusted by over 8 million customers around the world and have received praise for our easy-to-use app, secure wallet, and range of features.
+              <FaqItem open={false} title="How does your Bot work?">
+                We offer diverse trading assistance through telegram bots and in-service secured and trusted bot and AI assistance integration. All for for your systems. Contact us today to get started.
               </FaqItem>
-              <FaqItem open={false} title="Do I have to buy a whole Bitcoin?">
-                We're industry pioneers, having been in the cryptocurrency industry since 2016. We've facilitated more than 21 billion USD worth of transactions on our exchange for customers in over 40 countries. Today, we're trusted by over 8 million customers around the world and have received praise for our easy-to-use app, secure wallet, and range of features.
+              <FaqItem open={false} title="How do i trade my Coin?">
+                We have various ways to trade your Coin with others, first through a telegram bot and also through quick WhatsApp P2P services.
               </FaqItem>
-              <FaqItem open={false} title="How do I actually buy Bitcoin?">
-                We're industry pioneers, having been in the cryptocurrency industry since 2016. We've facilitated more than 21 billion USD worth of transactions on our exchange for customers in over 40 countries. Today, we're trusted by over 8 million customers around the world and have received praise for our easy-to-use app, secure wallet, and range of features.
+              <FaqItem open={false} title="Can I trade p2p on BlockValut?">
+                We are providing an in-platform p2p services soon, for now, you can trade your coins with our advanced telegram bot or in-person transactions through WhatsApp.
               </FaqItem>
             </div>
           </div>

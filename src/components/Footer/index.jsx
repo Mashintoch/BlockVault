@@ -177,30 +177,27 @@ export default function Footer() {
       </div>
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 overflow-y-auto">
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="fixed inset-0 bg-gray-900 opacity-50"></div>
-            <div className="relative bg-white rounded-lg p-8 max-w-md mx-auto z-50">
-              <button
-                className="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-800"
-                onClick={closeModal}
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-500 bg-opacity-75">
+          <div className="relative bg-white rounded-lg p-8 max-w-lg mx-auto z-50">
+            <button
+              className="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-800"
+              onClick={closeModal}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-              <p className="text-lg text-neutral-900">{modalContent}</p>
-            </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <p className="text-lg text-neutral-900 font-bold">{modalContent}</p>
           </div>
         </div>
       )}

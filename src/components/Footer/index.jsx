@@ -2,37 +2,34 @@ import React, { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import logo from "/Icons/logo.svg";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  const [modalContent, setModalContent] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://block-vault-server.vercel.app/api/subscribers/waitlist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "https://block-vault-server.vercel.app/api/subscribers/waitlist",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
       if (response.ok) {
-        setModalContent("Subscription successful!");
+        toast.success("Subscription successful!");
       } else {
-        setModalContent("Subscription failed. Please try again later.");
+        toast.error("Subscription failed. Please try again later.");
       }
-      setShowModal(true);
     } catch (error) {
       console.error("Error subscribing:", error);
-      setModalContent("An unexpected error occurred.");
-      setShowModal(true);
+      toast.error("An unexpected error occurred.");
     }
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
   };
 
   return (
@@ -119,7 +116,7 @@ export default function Footer() {
               </li>
               <li className="mb-4">
                 <a href="/" className="text-gray hover:text-primary">
-                  Area Avaibility
+                  Area Availability
                 </a>
               </li>
               <li className="mb-4">
@@ -132,7 +129,7 @@ export default function Footer() {
           <div className="p-6 w-full lg:col-span-3 xl:col-auto">
             <span className="text-gray">Newsletter</span>
             <p className="text-gray font-thin">
-              Never miss the lastest news & events on crypto
+              Never miss the latest news & events on crypto
             </p>
             <form onSubmit={handleSubmit}>
               <div className="flex gap-4 my-4">
@@ -175,32 +172,19 @@ export default function Footer() {
           </a>
         </small>
       </div>
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-500 bg-opacity-75">
-          <div className="relative bg-white rounded-lg p-8 max-w-md mx-auto z-50">
-            <button
-              className="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-800"
-              onClick={closeModal}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-            <p className="text-lg text-white">{modalContent}</p>
-          </div>
-        </div>
-      )}
+      {/* React Toastify Container */}
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </footer>
   );
 }

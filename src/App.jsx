@@ -12,8 +12,8 @@ function App() {
       <AnalyticsProvider>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="cryptocurrency" element={<CryptoCurrencyPage />} />
-          <Route path="waitlist" element={<Waitlist />} />
+          <Route path="/cryptocurrency" element={<CryptoCurrencyPage />} />
+          <Route path="/waitlist" element={<Waitlist />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </AnalyticsProvider>

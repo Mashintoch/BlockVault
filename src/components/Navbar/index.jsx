@@ -80,7 +80,7 @@ export default function Navbar() {
                     <a href="/waitlist">Join Waitlist</a>
                     </SecondaryButton>
                     <PrimaryButton className="w-full">
-                      <a href="whatsapp">Let's Trade</a>
+                      <a href="/whatsapp">Let's Trade</a>
                     </PrimaryButton>
 
                   </div>

@@ -3,14 +3,14 @@ import "./waitlist.css";
 import Layout from "@/components/Layout";
 import { BsArrowRight } from "react-icons/bs";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Waitlist = () => {
   const [email, setEmail] = useState("");
   const [buttonText, setButtonText] = useState("Join");
   const [resultMessage, setResultMessage] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,30 +22,30 @@ const Waitlist = () => {
       setButtonText("Sending...");
       setIsButtonDisabled(true);
 
-      const response = await fetch(
-        "https://block-vault-server.vercel.app/api/subscribers/waitlist",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
+      const response = await fetch("https://block-vault-server.vercel.app/api/subscribers/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
       const data = await response.json();
       if (response.ok) {
-        toast.success("Subscription successful!");
+        setModalContent("Subscription successful!");
+        setShowModal(true);
         setResultMessage("You have successfully joined the waitlist.");
         setButtonText("Success!");
       } else {
-        toast.error("Subscription failed. Please try again later.");
+        setModalContent("Subscription failed. Please try again later.");
+        setShowModal(true);
         setResultMessage(data.message);
         setButtonText("Try again");
       }
     } catch (error) {
       console.error("Error subscribing:", error);
-      toast.error("An unexpected error occurred.");
+      setModalContent("An unexpected error occurred.");
+      setShowModal(true);
       setResultMessage(error.message);
       setButtonText("Try again");
     } finally {
@@ -53,14 +53,17 @@ const Waitlist = () => {
     }
   };
 
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <Layout>
       <div className="container-section">
         <h1>Be the first to know when we launch</h1>
         <p>
-          At BlockVault, We are looking to solve the problems of trading
-          automation, stock ML model integration, explained trading insights and
-          future and past events aggregations.
+          At BlockVault, We are looking to solve the problems of trading automation,
+          stock ML model integration, explained trading insights and future and past events aggregations.
         </p>
         <form className="join-wrapper" onSubmit={handleSubmit}>
           <input
@@ -90,18 +93,33 @@ const Waitlist = () => {
           </p>
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-500 bg-opacity-75">
+          <div className="relative bg-white rounded-lg p-8 max-w-md mx-auto z-50">
+            <button
+              className="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-800"
+              onClick={closeModal}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <p className="text-lg text-neutral-900">{modalContent}</p>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };

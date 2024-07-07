@@ -2,34 +2,37 @@ import React, { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import logo from "/Icons/logo.svg";
 import PrimaryButton from "@/components/buttons/PrimaryButton";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        "https://block-vault-server.vercel.app/api/subscribers/waitlist",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
+      const response = await fetch("https://block-vault-server.vercel.app/api/subscribers/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
       if (response.ok) {
-        toast.success("Subscription successful!");
+        setModalContent("Subscription successful!");
       } else {
-        toast.error("Subscription failed. Please try again later.");
+        setModalContent("Subscription failed. Please try again later.");
       }
+      setShowModal(true);
     } catch (error) {
       console.error("Error subscribing:", error);
-      toast.error("An unexpected error occurred.");
+      setModalContent("An unexpected error occurred.");
+      setShowModal(true);
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -116,7 +119,7 @@ export default function Footer() {
               </li>
               <li className="mb-4">
                 <a href="/" className="text-gray hover:text-primary">
-                  Area Availability
+                  Area Avaibility
                 </a>
               </li>
               <li className="mb-4">
@@ -129,7 +132,7 @@ export default function Footer() {
           <div className="p-6 w-full lg:col-span-3 xl:col-auto">
             <span className="text-gray">Newsletter</span>
             <p className="text-gray font-thin">
-              Never miss the latest news & events on crypto
+              Never miss the lastest news & events on crypto
             </p>
             <form onSubmit={handleSubmit}>
               <div className="flex gap-4 my-4">
@@ -172,19 +175,35 @@ export default function Footer() {
           </a>
         </small>
       </div>
-      {/* React Toastify Container */}
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 overflow-y-auto">
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="fixed inset-0 bg-gray-900 opacity-50"></div>
+            <div className="relative bg-white rounded-lg p-8 max-w-md mx-auto z-50">
+              <button
+                className="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-800"
+                onClick={closeModal}
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+              <p className="text-lg text-neutral-900">{modalContent}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

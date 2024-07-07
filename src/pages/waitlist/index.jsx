@@ -18,12 +18,15 @@ const Waitlist = () => {
       setButtonText("Sending...");
       setIsButtonDisabled(true);
 
-      const formData = new FormData();
-      formData.append("email", email);
+      // const formData = new FormData();
+      // formData.append("email", email);
 
-      const response = await fetch("/waitlist", {
+      const response = await fetch("https://block-vault-server.vercel.app/api/subscribers/waitlist", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
       });
 
       const data = await response.json();

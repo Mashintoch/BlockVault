@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./waitlist.css";
 import Layout from "@/components/Layout";
-import { BsArrowRight } from "react-icons/bs";
-import PrimaryButton from "@/components/buttons/PrimaryButton";
 
 const Waitlist = () => {
   const [email, setEmail] = useState("");
@@ -22,13 +20,16 @@ const Waitlist = () => {
       setButtonText("Sending...");
       setIsButtonDisabled(true);
 
-      const response = await fetch("https://block-vault-server.vercel.app/api/subscribers/waitlist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "https://block-vault-server.vercel.app/api/subscribers/waitlist",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -53,8 +54,13 @@ const Waitlist = () => {
     }
   };
 
+  const reloadPage = () => {
+    window.location.reload();
+  };
+
   const closeModal = () => {
     setShowModal(false);
+    reloadPage();
   };
 
   return (
@@ -62,8 +68,9 @@ const Waitlist = () => {
       <div className="container-section">
         <h1>Be the first to know when we launch</h1>
         <p>
-          At BlockVault, We are looking to solve the problems of trading automation,
-          stock ML model integration, explained trading insights and future and past events aggregations.
+          At BlockVault, We are looking to solve the problems of trading
+          automation, stock ML model integration, explained trading insights and
+          future and past events aggregations.
         </p>
         <form className="join-wrapper" onSubmit={handleSubmit}>
           <input
@@ -73,13 +80,13 @@ const Waitlist = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <PrimaryButton
+          <button
             type="submit"
-            className="!px-5 aspect-square !rounded-md"
+            className="border border-primary hover:bg-primary hover:text-white transition-colors duration-300  from-primary to-secondary rounded-sm py-3 px-6 md:py-4 md:px-7"
             disabled={isButtonDisabled}
           >
-            {buttonText} <BsArrowRight color="white" />
-          </PrimaryButton>
+            {buttonText}
+          </button>
         </form>
         <p className="result">{resultMessage}</p>
         <div className="creators">
@@ -97,7 +104,7 @@ const Waitlist = () => {
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-500 bg-opacity-75">
-          <div className="relative bg-white rounded-lg p-8 max-w-md mx-auto z-50">
+          <div className="relative bg-white rounded-lg p-8 max-w-lg mx-auto z-50">
             <button
               className="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-800"
               onClick={closeModal}
@@ -116,7 +123,7 @@ const Waitlist = () => {
                 />
               </svg>
             </button>
-            <p className="text-lg text-neutral-900">{modalContent}</p>
+            <p className="text-lg text-neutral-900 font-bold">{modalContent}</p>
           </div>
         </div>
       )}

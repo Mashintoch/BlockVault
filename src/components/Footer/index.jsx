@@ -11,7 +11,7 @@ export default function Footer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("/waitlist", {
+      const response = await fetch("https://block-vault-server.vercel.app/api/subscribers/waitlist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import "./waitlist.css";
 import Layout from "@/components/Layout";
+import { BsArrowRight } from "react-icons/bs";
+import PrimaryButton from "@/components/buttons/PrimaryButton";
 
 const Waitlist = () => {
   const [email, setEmail] = useState("");
   const [buttonText, setButtonText] = useState("Join");
   const [resultMessage, setResultMessage] = useState("");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,9 +22,6 @@ const Waitlist = () => {
       setButtonText("Sending...");
       setIsButtonDisabled(true);
 
-      // const formData = new FormData();
-      // formData.append("email", email);
-
       const response = await fetch("https://block-vault-server.vercel.app/api/subscribers/waitlist", {
         method: "POST",
         headers: {
@@ -30,20 +31,30 @@ const Waitlist = () => {
       });
 
       const data = await response.json();
-      if (data.content) {
-        setButtonText("Success!");
+      if (response.ok) {
+        setModalContent("Subscription successful!");
+        setShowModal(true);
         setResultMessage("You have successfully joined the waitlist.");
+        setButtonText("Success!");
       } else {
-        setButtonText("Try again");
-        setIsButtonDisabled(false);
+        setModalContent("Subscription failed. Please try again later.");
+        setShowModal(true);
         setResultMessage(data.message);
+        setButtonText("Try again");
       }
     } catch (error) {
-      setButtonText("Try again");
-      setIsButtonDisabled(false);
+      console.error("Error subscribing:", error);
+      setModalContent("An unexpected error occurred.");
+      setShowModal(true);
       setResultMessage(error.message);
-      console.error(error);
+      setButtonText("Try again");
+    } finally {
+      setIsButtonDisabled(false);
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -62,13 +73,13 @@ const Waitlist = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button
+          <PrimaryButton
             type="submit"
-            className="border border-primary hover:bg-primary hover:text-white transition-colors duration-300  from-primary to-secondary rounded-sm py-3 px-6 md:py-4 md:px-7"
+            className="!px-5 aspect-square !rounded-md"
             disabled={isButtonDisabled}
           >
-            {buttonText}
-          </button>
+            {buttonText} <BsArrowRight color="white" />
+          </PrimaryButton>
         </form>
         <p className="result">{resultMessage}</p>
         <div className="creators">
@@ -82,6 +93,33 @@ const Waitlist = () => {
           </p>
         </div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-500 bg-opacity-75">
+          <div className="relative bg-white rounded-lg p-8 max-w-md mx-auto z-50">
+            <button
+              className="absolute top-0 right-0 mt-4 mr-4 text-gray-500 hover:text-gray-800"
+              onClick={closeModal}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <p className="text-lg text-white">{modalContent}</p>
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };

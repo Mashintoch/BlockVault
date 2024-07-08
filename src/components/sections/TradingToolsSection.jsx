@@ -2,7 +2,7 @@ import React from "react";
 
 import tradingTools from "@/images/illustrations/tradingtools.png";
 import SecondaryButton from "@/components/buttons/SecondaryButton";
-import { Fade} from "react-reveal";
+import { Fade } from "react-reveal";
 
 export default function TradingToolsSection() {
   return (
@@ -35,7 +35,11 @@ export default function TradingToolsSection() {
                   Connect to our WebSocket for real-time data streaming.
                 </p>
               </div>
-              <SecondaryButton><a href="/waitlist">Join Waitlist</a></SecondaryButton>
+              <SecondaryButton>
+                <a href="/waitlist" target="_blank" rel="noreferrer">
+                  Join Waitlist
+                </a>
+              </SecondaryButton>
             </div>
             <div className="row-start-1 mb-8">
               <Fade up delay={500}>

@@ -11,13 +11,16 @@ export default function Footer() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://block-vault-server.vercel.app/api/subscribers/waitlist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        "https://block-vault-server.vercel.app/api/subscribers/waitlist",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
       if (response.ok) {
         setModalContent("Subscription successful!");
       } else {
@@ -45,7 +48,12 @@ export default function Footer() {
             </div>
             <ul>
               <li className="mb-4">
-                <a href="/" className="text-gray hover:text-primary">
+                <a
+                  href="https://wa.me/+22897747549"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-gray hover:text-primary"
+                >
                   Trade Crypto
                 </a>
               </li>

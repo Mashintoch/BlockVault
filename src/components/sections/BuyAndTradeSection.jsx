@@ -99,7 +99,15 @@ export default function BuyAndTradeSection() {
               </div>
             </form>
 
-            <PrimaryButton className="w-full">Buy Now</PrimaryButton>
+            <PrimaryButton className="w-full">
+              <a
+                href="https://wa.me/+22897747549"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Buy Now
+              </a>
+            </PrimaryButton>
           </div>
         </div>
         <div className="row-start-1 md:col-start-2">

@@ -42,7 +42,13 @@ export default function HeroSection() {
             </div>
             <div className="col-span-2 lg:flex gap-4 lg:mb-12">
               <PrimaryButton className="w-full lg:w-auto mb-2 lg:mb-0">
-                Let's Trade
+                <a
+                  href="https://wa.me/+22897747549"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Let's Trade
+                </a>
               </PrimaryButton>
               <DropdownButton name="Download App" className="w-full lg:w-auto">
                 <a
